@@ -4,34 +4,222 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Minga, Maß und Mordsgaudi</title>
-<link rel="stylesheet" href="style.css">
+<style>
+/* Basis styling */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  height: 100%;
+  background: #f0f0f0;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+.page {
+  display: none;
+  min-height: 100vh;
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow-y: auto;
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  text-align: center;
+  transition: opacity 0.5s ease;
+}
+.page.active { display: block; opacity: 1; }
+.page.fade-out { opacity: 0; }
+
+.overlay {
+  background: rgba(0,0,0,0.6);
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Startpagina buttons */
+.day-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+  gap: 15px;
+}
+.day-buttons button, .verblijf-button button {
+  padding: 15px 30px;
+  font-size: 1.5em;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s;
+  color: white;
+}
+.day-buttons button { background-color: #ff8c00; }
+.day-buttons button:hover { background-color: #ffa500; }
+.verblijf-button button {
+  background-color: #ff4500;
+}
+.verblijf-button button:hover { background-color: #ff6347; }
+
+/* Back button */
+.back-button {
+  margin: 20px;
+  padding: 10px 20px;
+  font-size: 1em;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #444;
+  color: white;
+  transition: background 0.3s;
+}
+.back-button:hover { background-color: #666; }
+
+/* Tijdlijn */
+.timeline {
+  position: relative;
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+.timeline::after {
+  content: '';
+  position: absolute;
+  width: 4px;
+  background-color: #fff;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -2px;
+}
+.timeline-item {
+  opacity: 0;
+  transform: translateY(50px);
+  padding: 20px 30px;
+  position: relative;
+  width: 50%;
+  transition: all 0.6s ease;
+}
+.timeline-item.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.timeline-item.left { left: 0; }
+.timeline-item.right { left: 50%; }
+.timeline-item::after {
+  content: '';
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  right: -20px;
+  background-color: #ff8c00;
+  border: 4px solid #fff;
+  top: 20px;
+  border-radius: 50%;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5em;
+}
+.timeline-item.right::after { left: -20px; }
+.timeline-item .card {
+  background: rgba(255,255,255,0.1);
+  padding: 15px;
+  border-radius: 10px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.timeline-item .card div {
+  font-size: 1.5em;
+}
+.timeline-item .card p { margin: 0; font-size: 1em; color: #fff; }
+.timeline-item .card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.5);
+}
+
+/* Verblijf pagina */
+#verblijf .overlay {
+  background: linear-gradient(to bottom, rgba(106,76,147,0.8), rgba(58,110,165,0.8));
+  padding: 40px 20px;
+  text-align: center;
+  color: #fff;
+}
+#verblijf h2 {
+  font-size: 2.5em;
+  margin-bottom: 30px;
+  text-shadow: 1px 1px 5px rgba(0,0,0,0.7);
+}
+#verblijf .hotel-info {
+  font-size: 1.3em;
+  margin-bottom: 30px;
+  line-height: 1.6em;
+}
+/* Foto eigenaren met fade-in */
+#verblijf .owners-photo img {
+  width: 250px;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  margin-bottom: 30px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+#verblijf .owners-photo.visible img {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
 </head>
 <body>
 
-<!-- Startpagina met hero -->
-<div id="startpage" class="page active">
-  <div class="hero">
-    <img src="hero.jpg" alt="München avontuur">
-    <div class="overlay">
-      <div class="day-buttons">
-        <button onclick="openDay('donderdag')">Donderdag</button>
-        <button onclick="openDay('vrijdag')">Vrijdag</button>
-        <button onclick="openDay('zaterdag')">Zaterdag</button>
-        <button onclick="openDay('zondag')">Zondag</button>
-      </div>
+<!-- Startpagina -->
+<div id="startpage" class="page active" style="background-image: url('images/reisgids-voorkant.jpg');">
+  <div class="overlay">
+    <div class="verblijf-button">
+      <button onclick="openDay('verblijf')">Verblijf</button>
+    </div>
+    <div class="day-buttons">
+      <button onclick="openDay('donderdag')">Donderdag</button>
+      <button onclick="openDay('vrijdag')">Vrijdag</button>
+      <button onclick="openDay('zaterdag')">Zaterdag</button>
+      <button onclick="openDay('zondag')">Zondag</button>
     </div>
   </div>
 </div>
 
 <!-- Pagina’s -->
-<div id="donderdag" class="page" style="background-color:#1e3d59;"></div>
-<div id="vrijdag" class="page" style="background-color:#3a6ea5;"></div>
-<div id="zaterdag" class="page" style="background-color:#f18f01;"></div>
-<div id="zondag" class="page" style="background-color:#2e8b57;"></div>
+<div id="donderdag" class="page" style="background-color: #1e3d59;"></div>
+<div id="vrijdag" class="page" style="background-color: #3a6ea5;"></div>
+<div id="zaterdag" class="page" style="background-color: #f18f01;"></div>
+<div id="zondag" class="page" style="background-color: #2e8b57;"></div>
 
-<!-- Scripts onderaan body -->
+<!-- Verblijf pagina -->
+<div id="verblijf" class="page" style="background-color:#6a4c93;">
+  <div class="overlay">
+    <h2>Verblijf & Hotelinformatie</h2>
+    <div class="hotel-info">
+      <p><strong>Hotel Brunnendorf</strong><br>
+      Brunnendorfstraße 12, 80331 München<br>
+      Check-in: 14:00 - 20:00<br>
+      Check-out: 11:00</p>
+    </div>
+    <div class="owners-photo">
+      <img src="images/eigenaren.jpg" alt="Eigenaren Hotel Brunnendorf">
+    </div>
+    <button class="back-button" onclick="goBack()">Terug naar startpagina</button>
+  </div>
+</div>
+
 <script>
-// Navigatie met fade
+// Navigatie
 function openDay(dayId) {
   const current = document.querySelector('.page.active');
   if(current) {
@@ -41,6 +229,7 @@ function openDay(dayId) {
       const newPage = document.getElementById(dayId);
       newPage.classList.add('active');
       showTimelineItems(newPage);
+      if(dayId==='verblijf') showVerblijfPhoto();
     },500);
   }
 }
@@ -55,7 +244,7 @@ function goBack() {
   }
 }
 
-// Tijdlijn logica
+// Tijdlijn items
 function createTimeline(dayId, activities) {
   const page = document.getElementById(dayId);
   const timeline = document.createElement('div');
@@ -66,66 +255,67 @@ function createTimeline(dayId, activities) {
     item.innerHTML = `<h3>${act.time}</h3>
       <div class="card">
         <div style="font-size:1.5em;">${act.icon}</div>
+        ${act.img ? `<img src="${act.img}" alt="Afbeelding">` : ''}
         <p>${act.desc}</p>
       </div>`;
     timeline.appendChild(item);
   });
   page.appendChild(timeline);
   const backBtn = document.createElement('button');
-  backBtn.className = 'back-button';
-  backBtn.textContent = 'Heimwärts';
-  backBtn.onclick = goBack;
+  backBtn.className='back-button';
+  backBtn.textContent='Terug naar startpagina';
+  backBtn.onclick=goBack;
   page.appendChild(backBtn);
 }
 
-// Scroll animaties
+// Fade-in animatie tijdlijn
 function showTimelineItems(container) {
   const items = container.querySelectorAll('.timeline-item');
   items.forEach((item,i)=>{
-    setTimeout(()=>{ item.classList.add('visible'); }, i*200);
+    setTimeout(()=>{item.classList.add('visible');}, i*200);
   });
 }
 
-// Maak alle tijdlijnen aan nadat DOM volledig geladen is
-document.addEventListener('DOMContentLoaded', () => {
+// Fade-in voor eigenarenfoto
+function showVerblijfPhoto() {
+  const photoContainer = document.querySelector('#verblijf .owners-photo');
+  if(photoContainer) {
+    setTimeout(()=>{ photoContainer.classList.add('visible'); }, 500);
+  }
+}
 
-  // Donderdag
-  createTimeline('donderdag', [
-    {time:'16:00', desc:'Meeten bij Ties voor degene die kunnen', icon:'🤝'},
-    {time:'17:30', desc:'Diner bij ouders Bram (Oudegoedstraat 10)', icon:'🏠'},
-    {time:'19:10', desc:'Vertrek naar station Deventer', icon:'🚆'},
-    {time:'19:40', desc:'Vertrek QC Fuckyou Nightjet', icon:'🚆'}
-  ]);
+// Tijdlijnen vullen
+createTimeline('donderdag', [
+  {time:'16:00', desc:'Meeten bij Ties voor degene die kunnen', icon:'🤝'},
+  {time:'17:30', desc:'Diner bij ouders Bram (Oudegoedstraat 10)', icon:'🏠'},
+  {time:'19:10', desc:'Vertrek naar station Deventer', icon:'🚆'},
+  {time:'19:40', desc:'Vertrek QC Fuckyou Nightjet', icon:'🚆'}
+]);
 
-  // Vrijdag
-  createTimeline('vrijdag', [
-    {time:'06:24', desc:'Aankomst Augsburg (motherfuckers!)', icon:'🚆'},
-    {time:'06:38', desc:'Vertrek Augsburg naar Minga Hbf', icon:'🚆'},
-    {time:'07:20', desc:'Aankomst Minga Hbf', icon:'🚆'},
-    {time:'07:30-08:00', desc:'Spullen droppen hotel en ontbijt', icon:'☕'},
-    {time:'09:00', desc:'Sightseeing by 4xL', icon:'🌳'},
-    {time:'12:00', desc:'Tour Allianz Arena', icon:'🏟️'},
-    {time:'14:00', desc:'Eerste pilskes (Seehaus → Paulaner)', icon:'🍺'},
-    {time:'18:00', desc:'Inchecken Hotel', icon:'🏨'},
-    {time:'19:00', desc:'Andy’s Krablergarten', icon:'🍽️'},
-    {time:'Abend', desc:'Glockenbachviertel; Burg Pappenheim, Loretta, Pimpernel Club, Trisoux', icon:'🍸'}
-  ]);
+createTimeline('vrijdag', [
+  {time:'6:24', desc:'Aankomst Augsburg (motherfuckers!)', icon:'🚆'},
+  {time:'6:38', desc:'Vertrek Augsburg naar Minga Hbf', icon:'🚆'},
+  {time:'7:20', desc:'Aankomst Minga Hbf', icon:'🚆'},
+  {time:'7:30-08:00', desc:'Spullen droppen hotel en ontbijt', icon:'☕'},
+  {time:'9:00', desc:'Sightseeing by 4xL', icon:'🌳'},
+  {time:'12:00', desc:'Tour Allianz Arena', icon:'🏟️'},
+  {time:'14:00', desc:'Eerste pilskes (Seehaus Biergarten - Hofbräuhaus - Hirschgarten - Augustiner keller - Paulaner)', icon:'🍺'},
+  {time:'18:00', desc:'Inchecken Hotel', icon:'🏨'},
+  {time:'19:00', desc:'Andy’s Krablergarten', icon:'🍽️'},
+  {time:'Abend', desc:'Glockenbachviertel; Burg Pappenheim, Loretta, Pimpernel Club, Trisoux', icon:'🍸'}
+]);
 
-  // Zaterdag
-  createTimeline('zaterdag', [
-    {time:'07:00', desc:'Ontbijt hotel', icon:'☕'},
-    {time:'07:45', desc:'Vertrek Wies\'n', icon:'🚗'}
-  ]);
+createTimeline('zaterdag', [
+  {time:'07:00', desc:'Ontbijt hotel', icon:'☕'},
+  {time:'07:45', desc:'Vertrek Wies\'n', icon:'🚗'}
+]);
 
-  // Zondag
-  createTimeline('zondag', [
-    {time:'07:00', desc:'Ontbijt hotel', icon:'☕'},
-    {time:'09:50', desc:'Trein München Hbf', icon:'🚆'},
-    {time:'17:15', desc:'Aankomst Deventer', icon:'🏠'},
-    {time:'17:20', desc:'Verjaardag Janne', icon:'🎉'}
-  ]);
-
-});
+createTimeline('zondag', [
+  {time:'Ontbijt', desc:'Ontbijt hotel', icon:'☕'},
+  {time:'09:50', desc:'München Hbf', icon:'🚆'},
+  {time:'17:15', desc:'Aankomst Deventer', icon:'🏠'},
+  {time:'17:20', desc:'Verjaardag Janne', icon:'🎉'}
+]);
 </script>
 
 </body>
