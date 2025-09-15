@@ -121,19 +121,26 @@ body, html {
 }
 .timeline-item.left { left: 0; }
 .timeline-item.right { left: 50%; }
+
+/* Kwal-bolletje */
 .timeline-item::after {
   content: '';
   position: absolute;
-  width: 40px;
-  height: 40px;
-  right: -20px;
-  background-color: #ff8c00;
-  border: 4px solid #fff;
+  width: 60px;       /* breedte kwal */
+  height: 60px;      /* hoogte kwal */
   top: 20px;
-  border-radius: 50%;
+  right: -30px;      /* links/rechts aanpassen bij .right */
+  background: radial-gradient(circle at 50% 30%, #ff8c00 0%, #ff8c00 60%, transparent 70%);
+  border: 2px solid #fff;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; /* ovaal/kwalvorm */
   z-index: 1;
 }
-.timeline-item.right::after { left: -20px; }
+.timeline-item.right::after {
+  left: -30px;
+  right: auto;
+}
+
+/* Tijdlijn-kaarten */
 .timeline-item .card {
   background: rgba(255,255,255,0.1);
   padding: 15px;
@@ -145,7 +152,11 @@ body, html {
   box-shadow: 0 2px 8px rgba(0,0,0,0.3);
   transition: transform 0.3s, box-shadow 0.3s;
 }
-.timeline-item .card p { margin: 0; font-size: 1em; color: #fff; }
+.timeline-item .card p {
+  margin: 0;
+  font-size: 1em;
+  color: #fff;
+}
 .timeline-item .card:hover {
   transform: scale(1.05);
   box-shadow: 0 4px 16px rgba(0,0,0,0.5);
