@@ -1,149 +1,132 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="nl">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2575.7">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000; min-height: 14.0px}
-    span.s1 {font-kerning: none}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Minga, Maß und Mordsgaudi</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<p class="p1"><span class="s1">&lt;!DOCTYPE html&gt;</span></p>
-<p class="p1"><span class="s1">&lt;html lang="nl"&gt;</span></p>
-<p class="p1"><span class="s1">&lt;head&gt;</span></p>
-<p class="p1"><span class="s1">&lt;meta charset="UTF-8"&gt;</span></p>
-<p class="p1"><span class="s1">&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</span></p>
-<p class="p1"><span class="s1">&lt;title&gt;Minga, Maß und Mordsgaudi&lt;/title&gt;</span></p>
-<p class="p1"><span class="s1">&lt;link rel="stylesheet" href="style.css"&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/head&gt;</span></p>
-<p class="p1"><span class="s1">&lt;body&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">&lt;!-- Startpagina met hero --&gt;</span></p>
-<p class="p1"><span class="s1">&lt;div id="startpage" class="page active"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;div class="hero"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;img src="hero.jpg" alt="München avontuur"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div class="overlay"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;div class="day-buttons"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;button onclick="openDay('donderdag')"&gt;Donderdag&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;button onclick="openDay('vrijdag')"&gt;Vrijdag&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;button onclick="openDay('zaterdag')"&gt;Zaterdag&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;button onclick="openDay('zondag')"&gt;Zondag&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">&lt;!-- Pagina’s --&gt;</span></p>
-<p class="p1"><span class="s1">&lt;div id="donderdag" class="page" style="background-color:#1e3d59;"&gt;&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1">&lt;div id="vrijdag" class="page" style="background-color:#3a6ea5;"&gt;&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1">&lt;div id="zaterdag" class="page" style="background-color:#f18f01;"&gt;&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1">&lt;div id="zondag" class="page" style="background-color:#2e8b57;"&gt;&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">&lt;!-- Scripts onderaan body --&gt;</span></p>
-<p class="p1"><span class="s1">&lt;script&gt;</span></p>
-<p class="p1"><span class="s1">// Navigatie met fade</span></p>
-<p class="p1"><span class="s1">function openDay(dayId) {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const current = document.querySelector('.page.active');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if(current) {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>current.classList.add('fade-out');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>setTimeout(()=&gt; {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>current.classList.remove('active','fade-out');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>const newPage = document.getElementById(dayId);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>newPage.classList.add('active');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>showTimelineItems(newPage);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>},500);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>}</span></p>
-<p class="p1"><span class="s1">}</span></p>
-<p class="p1"><span class="s1">function goBack() {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const current = document.querySelector('.page.active');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if(current) {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>current.classList.add('fade-out');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>setTimeout(()=&gt; {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>current.classList.remove('active','fade-out');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>document.getElementById('startpage').classList.add('active');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>},500);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>}</span></p>
-<p class="p1"><span class="s1">}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">// Tijdlijn logica</span></p>
-<p class="p1"><span class="s1">function createTimeline(dayId, activities) {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const page = document.getElementById(dayId);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const timeline = document.createElement('div');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>timeline.className = 'timeline';</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>activities.forEach((act,i)=&gt;{</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>const item = document.createElement('div');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>item.className = 'timeline-item ' + (i%2===0?'left':'right');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>item.innerHTML = `&lt;h3&gt;${act.time}&lt;/h3&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;div class="card"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div style="font-size:1.5em;"&gt;${act.icon}&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;p&gt;${act.desc}&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;/div&gt;`;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>timeline.appendChild(item);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>});</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>page.appendChild(timeline);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const backBtn = document.createElement('button');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>backBtn.className = 'back-button';</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>backBtn.textContent = 'Terug naar startpagina';</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>backBtn.onclick = goBack;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>page.appendChild(backBtn);</span></p>
-<p class="p1"><span class="s1">}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">// Scroll animaties</span></p>
-<p class="p1"><span class="s1">function showTimelineItems(container) {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const items = container.querySelectorAll('.timeline-item');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>items.forEach((item,i)=&gt;{</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>setTimeout(()=&gt;{ item.classList.add('visible'); }, i*200);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>});</span></p>
-<p class="p1"><span class="s1">}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">// Maak alle tijdlijnen aan nadat DOM volledig geladen is</span></p>
-<p class="p1"><span class="s1">document.addEventListener('DOMContentLoaded', () =&gt; {</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>// Donderdag</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>createTimeline('donderdag', [</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>{time:'16:00', desc:'Meeten bij Ties voor degene die kunnen', icon:'🤝'},</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>{time:'17:30', desc:'Diner bij ouders Bram (Oudegoedstraat 10)', icon:'🏠'},</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>{time:'19:10', desc:'Vertrek naar station Deventer', icon:'🚆'},</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>{time:'19:40', desc:'Vertrek QC Fuckyou Nightjet', icon:'🚆'}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>]);</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>// Vrijdag</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>createTimeline('vrijdag', [</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>{time:'06:24', desc:'Aankomst Augsburg (motherfuckers!)', icon:'🚆'},</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>{time:'06:38', desc:'Vertrek Augsburg naar Minga Hbf', icon:'🚆'},</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>{time:'07:20', desc:'Aankomst Minga Hbf', icon:'🚆'},</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>{time:'07:30-08:00', desc:'Spullen droppen hotel en ontbijt', icon:'☕'},</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>{time:'09:00', desc:'Sightseeing by 4xL', icon:'🌳'},</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>{time:'12:00', desc:'Tour Allianz Arena', icon:'🏟️'},</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>{time:'14:00', desc:'Eerste pilskes (Seehaus → Paulaner)', icon:'🍺'},</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>{time:'18:00', desc:'Inchecken Hotel', icon:'🏨'},</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>{time:'19:00', desc:'Andy’s Krablergarten', icon:'🍽️'},</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>{time:'Abend', desc:'Glockenbachviertel; Burg Pappenheim, Loretta, Pimpernel Club, Trisoux', icon:'🍸'}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>]);</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>// Zaterdag</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>createTimeline('zaterdag', [</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>{time:'07:00', desc:'Ontbijt hotel', icon:'☕'},</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>{time:'07:45', desc:'Vertrek Wies\'n', icon:'🚗'}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>]);</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>// Zondag</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>createTimeline('zondag', [</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>{time:'07:00', desc:'Ontbijt hotel', icon:'☕'},</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>{time:'09:50', desc:'Trein München Hbf', icon:'🚆'},</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>{time:'17:15', desc:'Aankomst Deventer', icon:'🏠'},</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>{time:'17:20', desc:'Verjaardag Janne', icon:'🎉'}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>]);</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">});</span></p>
-<p class="p1"><span class="s1">&lt;/script&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">&lt;/body&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/html&gt;</span></p>
+
+<!-- Startpagina met hero -->
+<div id="startpage" class="page active">
+  <div class="hero">
+    <img src="hero.jpg" alt="München avontuur">
+    <div class="overlay">
+      <div class="day-buttons">
+        <button onclick="openDay('donderdag')">Donderdag</button>
+        <button onclick="openDay('vrijdag')">Vrijdag</button>
+        <button onclick="openDay('zaterdag')">Zaterdag</button>
+        <button onclick="openDay('zondag')">Zondag</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Pagina’s -->
+<div id="donderdag" class="page" style="background-color:#1e3d59;"></div>
+<div id="vrijdag" class="page" style="background-color:#3a6ea5;"></div>
+<div id="zaterdag" class="page" style="background-color:#f18f01;"></div>
+<div id="zondag" class="page" style="background-color:#2e8b57;"></div>
+
+<!-- Scripts onderaan body -->
+<script>
+// Navigatie met fade
+function openDay(dayId) {
+  const current = document.querySelector('.page.active');
+  if(current) {
+    current.classList.add('fade-out');
+    setTimeout(()=> {
+      current.classList.remove('active','fade-out');
+      const newPage = document.getElementById(dayId);
+      newPage.classList.add('active');
+      showTimelineItems(newPage);
+    },500);
+  }
+}
+function goBack() {
+  const current = document.querySelector('.page.active');
+  if(current) {
+    current.classList.add('fade-out');
+    setTimeout(()=> {
+      current.classList.remove('active','fade-out');
+      document.getElementById('startpage').classList.add('active');
+    },500);
+  }
+}
+
+// Tijdlijn logica
+function createTimeline(dayId, activities) {
+  const page = document.getElementById(dayId);
+  const timeline = document.createElement('div');
+  timeline.className = 'timeline';
+  activities.forEach((act,i)=>{
+    const item = document.createElement('div');
+    item.className = 'timeline-item ' + (i%2===0?'left':'right');
+    item.innerHTML = `<h3>${act.time}</h3>
+      <div class="card">
+        <div style="font-size:1.5em;">${act.icon}</div>
+        <p>${act.desc}</p>
+      </div>`;
+    timeline.appendChild(item);
+  });
+  page.appendChild(timeline);
+  const backBtn = document.createElement('button');
+  backBtn.className = 'back-button';
+  backBtn.textContent = 'Terug naar startpagina';
+  backBtn.onclick = goBack;
+  page.appendChild(backBtn);
+}
+
+// Scroll animaties
+function showTimelineItems(container) {
+  const items = container.querySelectorAll('.timeline-item');
+  items.forEach((item,i)=>{
+    setTimeout(()=>{ item.classList.add('visible'); }, i*200);
+  });
+}
+
+// Maak alle tijdlijnen aan nadat DOM volledig geladen is
+document.addEventListener('DOMContentLoaded', () => {
+
+  // Donderdag
+  createTimeline('donderdag', [
+    {time:'16:00', desc:'Meeten bij Ties voor degene die kunnen', icon:'🤝'},
+    {time:'17:30', desc:'Diner bij ouders Bram (Oudegoedstraat 10)', icon:'🏠'},
+    {time:'19:10', desc:'Vertrek naar station Deventer', icon:'🚆'},
+    {time:'19:40', desc:'Vertrek QC Fuckyou Nightjet', icon:'🚆'}
+  ]);
+
+  // Vrijdag
+  createTimeline('vrijdag', [
+    {time:'06:24', desc:'Aankomst Augsburg (motherfuckers!)', icon:'🚆'},
+    {time:'06:38', desc:'Vertrek Augsburg naar Minga Hbf', icon:'🚆'},
+    {time:'07:20', desc:'Aankomst Minga Hbf', icon:'🚆'},
+    {time:'07:30-08:00', desc:'Spullen droppen hotel en ontbijt', icon:'☕'},
+    {time:'09:00', desc:'Sightseeing by 4xL', icon:'🌳'},
+    {time:'12:00', desc:'Tour Allianz Arena', icon:'🏟️'},
+    {time:'14:00', desc:'Eerste pilskes (Seehaus → Paulaner)', icon:'🍺'},
+    {time:'18:00', desc:'Inchecken Hotel', icon:'🏨'},
+    {time:'19:00', desc:'Andy’s Krablergarten', icon:'🍽️'},
+    {time:'Abend', desc:'Glockenbachviertel; Burg Pappenheim, Loretta, Pimpernel Club, Trisoux', icon:'🍸'}
+  ]);
+
+  // Zaterdag
+  createTimeline('zaterdag', [
+    {time:'07:00', desc:'Ontbijt hotel', icon:'☕'},
+    {time:'07:45', desc:'Vertrek Wies\'n', icon:'🚗'}
+  ]);
+
+  // Zondag
+  createTimeline('zondag', [
+    {time:'07:00', desc:'Ontbijt hotel', icon:'☕'},
+    {time:'09:50', desc:'Trein München Hbf', icon:'🚆'},
+    {time:'17:15', desc:'Aankomst Deventer', icon:'🏠'},
+    {time:'17:20', desc:'Verjaardag Janne', icon:'🎉'}
+  ]);
+
+});
+</script>
+
 </body>
 </html>
