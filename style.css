@@ -6,7 +6,7 @@ body, html {
   height: 100%;
   scroll-behavior: smooth;
   overflow-x: hidden;
-  color: #fff;
+  color: #222; /* standaard donkergrijs voor leesbaarheid */
   background: #f0f0f0;
 }
 
@@ -37,6 +37,7 @@ body, html {
   justify-content: center;
   padding: 20px;
   box-sizing: border-box;
+  color: #fff;
 }
 
 /* Startpagina knoppen */
@@ -47,7 +48,8 @@ body, html {
   margin-top: 20px;
   gap: 20px;
 }
-.day-buttons button {
+.day-buttons button,
+.verblijf-button button {
   padding: 15px 30px;
   font-size: 1.5em;
   border: none;
@@ -55,9 +57,19 @@ body, html {
   cursor: pointer;
   background-color: #ff8c00;
   color: white;
-  transition: background 0.3s;
+  transition: background 0.3s, transform 0.2s;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
-.day-buttons button:hover { background-color: #ffa500; }
+.day-buttons button:hover,
+.verblijf-button button:hover {
+  background-color: #ffa500;
+  transform: scale(1.05);
+}
+.day-buttons button:focus,
+.verblijf-button button:focus {
+  outline: 2px solid #ffa500;
+  outline-offset: 4px;
+}
 
 /* Terug-knop */
 .back-button {
@@ -72,6 +84,10 @@ body, html {
   transition: background 0.3s;
 }
 .back-button:hover { background-color: #666; }
+.back-button:focus {
+  outline: 2px solid #ffa500;
+  outline-offset: 4px;
+}
 
 /* Pagina’s */
 .page {
@@ -89,6 +105,17 @@ body, html {
 }
 .page.active { display: block; opacity: 1; }
 .page.fade-out { opacity: 0; }
+
+/* Achtergrond voor dagen + verblijf */
+#donderdag,
+#vrijdag,
+#zaterdag,
+#zondag,
+#verblijf {
+  background-image: url("images/bavarian-bg.jpg");
+  background-size: cover;
+  background-position: center;
+}
 
 /* Tijdlijn stijl */
 .timeline {
@@ -122,22 +149,26 @@ body, html {
 .timeline-item.left { left: 0; }
 .timeline-item.right { left: 50%; }
 
-/* Kwal-bolletje */
+/* Kwal-bolletje (gecentreerd) */
 .timeline-item::after {
   content: '';
   position: absolute;
-  width: 60px;       /* breedte kwal */
-  height: 60px;      /* hoogte kwal */
+  width: 60px;
+  height: 60px;
   top: 20px;
-  right: -30px;      /* links/rechts aanpassen bij .right */
+  left: calc(50% - 30px);
   background: radial-gradient(circle at 50% 30%, #ff8c00 0%, #ff8c00 60%, transparent 70%);
   border: 2px solid #fff;
-  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; /* ovaal/kwalvorm */
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
   z-index: 1;
+  animation: pulse 2s infinite;
 }
-.timeline-item.right::after {
-  left: -30px;
-  right: auto;
+
+/* Puls animatie voor kwal */
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.1); opacity: 0.8; }
+  100% { transform: scale(1); opacity: 1; }
 }
 
 /* Tijdlijn-kaarten */
@@ -151,13 +182,27 @@ body, html {
   gap: 10px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.3);
   transition: transform 0.3s, box-shadow 0.3s;
+  color: #fff;
 }
 .timeline-item .card p {
   margin: 0;
   font-size: 1em;
-  color: #fff;
 }
 .timeline-item .card:hover {
   transform: scale(1.05);
   box-shadow: 0 4px 16px rgba(0,0,0,0.5);
+}
+
+/* Responsive timeline */
+@media (max-width: 768px) {
+  .timeline::after { left: 20px; }
+  .timeline-item {
+    width: 100%;
+    padding-left: 60px;
+    padding-right: 20px;
+  }
+  .timeline-item::after {
+    left: 0;
+    right: auto;
+  }
 }
