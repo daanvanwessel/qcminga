@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 140">
+  <!-- Kop -->
+  <ellipse cx="50" cy="40" rx="40" ry="30" fill="#ff8c00" stroke="white" stroke-width="3"></ellipse>
+  <!-- Oogjes -->
+  <circle cx="38" cy="38" r="5" fill="white"></circle>
+  <circle cx="62" cy="38" r="5" fill="white"></circle>
+  <circle cx="38" cy="38" r="2" fill="black"></circle>
+  <circle cx="62" cy="38" r="2" fill="black"></circle>
+  <!-- Tentakels -->
+  <path d="M20 70 Q15 100 30 130" stroke="#ff8c00" stroke-width="6" fill="none" stroke-linecap="round"></path>
+  <path d="M40 70 Q35 110 50 135" stroke="#ff8c00" stroke-width="6" fill="none" stroke-linecap="round"></path>
+  <path d="M60 70 Q65 110 50 135" stroke="#ff8c00" stroke-width="6" fill="none" stroke-linecap="round"></path>
+  <path d="M80 70 Q85 100 70 130" stroke="#ff8c00" stroke-width="6" fill="none" stroke-linecap="round"></path>
+</svg>
