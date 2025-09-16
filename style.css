@@ -10,23 +10,14 @@ body, html {
   background: #f0f0f0;
 }
 
-/* Hero startpagina */
-.hero {
+/* Startpagina */
+#startpage {
   position: relative;
   width: 100%;
   height: 100vh;
   overflow: hidden;
 }
-.hero img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
-}
-.hero .overlay {
+#startpage .overlay {
   position: relative;
   z-index: 2;
   background: rgba(0,0,0,0.5);
@@ -104,7 +95,7 @@ body, html {
   transition: opacity 0.5s ease;
 }
 .page.active { display: block; opacity: 1; }
-.page.fade-out { opacity: 0; }
+.page.fade-out { opacity: 0; pointer-events: none; }
 
 /* Achtergrond voor dagen + verblijf */
 #donderdag,
@@ -117,7 +108,7 @@ body, html {
   background-position: center;
 }
 
-/* Tijdlijn stijl */
+/* Tijdlijn stijl (gecentreerd) */
 .timeline {
   position: relative;
   max-width: 600px;
@@ -132,48 +123,48 @@ body, html {
   top: 0;
   bottom: 0;
   left: 50%;
-  margin-left: -2px;
+  transform: translateX(-50%);
 }
+
+/* Timeline items */
 .timeline-item {
   opacity: 0;
   transform: translateY(50px);
+  margin: 60px auto;
   padding: 20px 30px;
-  position: relative;
-  width: 50%;
+  width: 80%;
+  max-width: 400px;
+  text-align: center;
   transition: all 0.6s ease;
+  position: relative;
 }
 .timeline-item.visible {
   opacity: 1;
   transform: translateY(0);
 }
-.timeline-item.left { left: 0; }
-.timeline-item.right { left: 50%; }
 
-/* Kwal-bolletje (gecentreerd) */
-.timeline-item::after {
-  content: '';
+/* Kwal-icoon */
+.timeline-item .kwal {
   position: absolute;
-  width: 60px;
-  height: 60px;
-  top: 20px;
-  left: calc(50% - 30px);
-  background: radial-gradient(circle at 50% 30%, #ff8c00 0%, #ff8c00 60%, transparent 70%);
-  border: 2px solid #fff;
-  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-  z-index: 1;
-  animation: pulse 2s infinite;
+  top: -110px; /* boven de kaart */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 110px;
+  background: url("images/kwal.svg") no-repeat center/contain;
+  animation: floaty 4s ease-in-out infinite;
+  z-index: 2;
 }
 
-/* Puls animatie voor kwal */
-@keyframes pulse {
-  0% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.1); opacity: 0.8; }
-  100% { transform: scale(1); opacity: 1; }
+@keyframes floaty {
+  0%   { transform: translateX(-50%) translateY(0); }
+  50%  { transform: translateX(-50%) translateY(-10px); }
+  100% { transform: translateX(-50%) translateY(0); }
 }
 
 /* Tijdlijn-kaarten */
 .timeline-item .card {
-  background: rgba(255,255,255,0.1);
+  background: rgba(0,0,0,0.6);
   padding: 15px;
   border-radius: 10px;
   text-align: left;
@@ -193,16 +184,26 @@ body, html {
   box-shadow: 0 4px 16px rgba(0,0,0,0.5);
 }
 
+/* Verblijf-foto fade-in */
+.owners-photo {
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+.owners-photo.visible {
+  opacity: 1;
+}
+
 /* Responsive timeline */
 @media (max-width: 768px) {
-  .timeline::after { left: 20px; }
+  .timeline::after { left: 20px; transform: none; }
   .timeline-item {
     width: 100%;
+    max-width: none;
     padding-left: 60px;
-    padding-right: 20px;
+    text-align: left;
   }
-  .timeline-item::after {
-    left: 0;
-    right: auto;
+  .timeline-item .kwal {
+    left: 20px;
+    transform: none;
   }
 }
