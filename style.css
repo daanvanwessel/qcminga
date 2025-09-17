@@ -1,11 +1,11 @@
-/* ===== Fonts ===== */
+/* ===== Font ===== */
 @import url('https://fonts.googleapis.com/css2?family=Germania+One&display=swap');
 
 /* ===== Basisstijl ===== */
 body, html {
   margin: 0;
   padding: 0;
-  font-family: Arial, sans-serif; /* strak & leesbaar */
+  font-family: 'Germania One', cursive, Arial, Helvetica, sans-serif; 
   height: 100%;
   scroll-behavior: smooth;
   overflow-x: hidden;
@@ -60,7 +60,6 @@ body, html {
   align-items: center;
   justify-content: center;
   color: white;
-  font-family: 'Germania One', cursive; /* feestelijk font */
 }
 
 /* Oranje knoppen (dagen) */
@@ -224,7 +223,6 @@ body, html {
   background-color: #cc0000;
   color: white;
   transition: background 0.3s;
-  font-family: 'Germania One', cursive;
 }
 .back-button:hover { background-color: #990000; }
 
