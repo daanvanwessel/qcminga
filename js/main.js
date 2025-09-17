@@ -107,7 +107,7 @@ createTimeline('donderdag', [
 ]);
 
 createTimeline('vrijdag', [
-  { time: '6:24', desc: 'Aankomst Augsburg'},
+  { time: '6:24', desc: 'Aankomst Augsburg Hbf'},
   { time: '6:38', desc: 'Vertrek naar München Hbf' },
   { time: '7:20', desc: 'Aankomst München Hbf'},
   { time: '7:30-08:00', desc: 'Spullen droppen hotel en ontbijt'},
