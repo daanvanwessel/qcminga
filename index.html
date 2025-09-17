@@ -21,13 +21,13 @@
 <div id="startpage" class="page active">
   <div class="overlay">
     <div class="verblijf-button">
-      <a href="#verblijf">Verblijf</a>
+      <button onclick="openDay('verblijf')">Verblijf</button>
     </div>
     <div class="day-buttons">
-      <a href="#donderdag">Donderdag</a>
-      <a href="#vrijdag">Vrijdag</a>
-      <a href="#zaterdag">Zaterdag</a>
-      <a href="#zondag">Zondag</a>
+      <button onclick="openDay('donderdag')">Donderdag</button>
+      <button onclick="openDay('vrijdag')">Vrijdag</button>
+      <button onclick="openDay('zaterdag')">Zaterdag</button>
+      <button onclick="openDay('zondag')">Zondag</button>
     </div>
   </div>
 </div>
@@ -51,7 +51,7 @@
     <div class="owners-photo">
       <img src="images/eigenaren.jpg" alt="Eigenaren Hotel Brunnendorf">
     </div>
-    <a href="#startpage" class="back-button">Heimwärts</a>
+    <button class="back-button" onclick="goBack()">Heimwärts</button>
   </div>
 </div>
 
