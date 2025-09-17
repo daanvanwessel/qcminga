@@ -1,3 +1,24 @@
+// Navigatie
+function openDay(dayId) {
+  const current = document.querySelector('.page.active');
+  if (current) {
+    current.classList.remove('active');
+  }
+  const newPage = document.getElementById(dayId);
+  if (newPage) {
+    newPage.classList.add('active');
+    if (dayId === 'verblijf') showVerblijfPhoto();
+  }
+}
+
+function goBack() {
+  const current = document.querySelector('.page.active');
+  if (current) {
+    current.classList.remove('active');
+  }
+  document.getElementById('startpage').classList.add('active');
+}
+
 // Tijdlijn opbouwen
 function createTimeline(dayId, activities) {
   const page = document.getElementById(dayId);
@@ -29,22 +50,12 @@ function createTimeline(dayId, activities) {
   });
 
   page.appendChild(timeline);
-}
 
-// Scroll reveal
-function enableScrollReveal(container) {
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.2 });
-
-  container.querySelectorAll('.timeline-item').forEach(item => {
-    observer.observe(item);
-  });
+  const backBtn = document.createElement('button');
+  backBtn.className = 'back-button';
+  backBtn.textContent = 'Heimwärts';
+  backBtn.onclick = goBack;
+  page.appendChild(backBtn);
 }
 
 // Fade-in voor eigenarenfoto
@@ -56,25 +67,6 @@ function showVerblijfPhoto() {
     }, 500);
   }
 }
-
-// Router: activeer juiste pagina op basis van hash
-function showPageFromHash() {
-  const pages = document.querySelectorAll('.page');
-  pages.forEach(p => p.classList.remove('active'));
-
-  let hash = location.hash.replace('#', '');
-  if (!hash) hash = 'startpage';
-
-  const page = document.getElementById(hash);
-  if (page) {
-    page.classList.add('active');
-    enableScrollReveal(page);
-    if (hash === 'verblijf') showVerblijfPhoto();
-  }
-}
-
-window.addEventListener('hashchange', showPageFromHash);
-window.addEventListener('DOMContentLoaded', showPageFromHash);
 
 // Tijdlijnen vullen
 createTimeline('donderdag', [
@@ -90,7 +82,7 @@ createTimeline('vrijdag', [
   { time: '6:24', desc: 'Aankomst Augsburg Hbf'},
   { time: '6:38', desc: 'Vertrek naar München Hbf' },
   { time: '7:20', desc: 'Aankomst München Hbf'},
-  { time: '08:00', desc: 'Spullen droppen hotel en ontbijt'},
+  { time: '7:30-08:00', desc: 'Spullen droppen hotel en ontbijt'},
   { time: '9:00', desc: 'Sightseeing by 4xL'},
   { time: '12:00', desc: 'Tour Allianz Arena' },
   { time: '14:00', desc: 'Eerste pilskes (Hirschgarten, Seehaus, Augustiner, Paulaner)' },
