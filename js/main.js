@@ -1,34 +1,6 @@
-// Navigatie
-function openDay(dayId) {
-  const current = document.querySelector('.page.active');
-  if (current) {
-    current.classList.add('fade-out');
-    setTimeout(() => {
-      current.classList.remove('active', 'fade-out');
-      const newPage = document.getElementById(dayId);
-      newPage.classList.add('active');
-      enableScrollReveal(newPage);
-      if (dayId === 'verblijf') showVerblijfPhoto();
-    }, 500);
-  }
-}
-
-function goBack() {
-  const current = document.querySelector('.page.active');
-  if (current) {
-    current.classList.add('fade-out');
-    setTimeout(() => {
-      current.classList.remove('active', 'fade-out');
-      document.getElementById('startpage').classList.add('active');
-    }, 500);
-  }
-}
-
 // Tijdlijn opbouwen
 function createTimeline(dayId, activities) {
   const page = document.getElementById(dayId);
-
-  // voorkom dubbele rendering
   if (page.querySelector('.timeline')) return;
 
   const timeline = document.createElement('div');
@@ -38,36 +10,25 @@ function createTimeline(dayId, activities) {
     const item = document.createElement('div');
     item.className = 'timeline-item';
 
-    // kwal
     const jelly = document.createElement('div');
     jelly.className = 'kwal';
 
-    // tijd
     const title = document.createElement('h3');
     title.textContent = act.time;
 
-    // kaartje
     const card = document.createElement('div');
     card.className = 'card';
     const text = document.createElement('p');
     text.textContent = act.desc;
     card.appendChild(text);
 
-    // samenvoegen
     item.appendChild(jelly);
     item.appendChild(title);
     item.appendChild(card);
-
     timeline.appendChild(item);
   });
 
   page.appendChild(timeline);
-
-  const backBtn = document.createElement('button');
-  backBtn.className = 'back-button';
-  backBtn.textContent = 'Heimwärts';
-  backBtn.onclick = goBack;
-  page.appendChild(backBtn);
 }
 
 // Scroll reveal
@@ -96,6 +57,25 @@ function showVerblijfPhoto() {
   }
 }
 
+// Router: activeer juiste pagina op basis van hash
+function showPageFromHash() {
+  const pages = document.querySelectorAll('.page');
+  pages.forEach(p => p.classList.remove('active'));
+
+  let hash = location.hash.replace('#', '');
+  if (!hash) hash = 'startpage';
+
+  const page = document.getElementById(hash);
+  if (page) {
+    page.classList.add('active');
+    enableScrollReveal(page);
+    if (hash === 'verblijf') showVerblijfPhoto();
+  }
+}
+
+window.addEventListener('hashchange', showPageFromHash);
+window.addEventListener('DOMContentLoaded', showPageFromHash);
+
 // Tijdlijnen vullen
 createTimeline('donderdag', [
   { time: '16:00', desc: 'Pre-Maß @ President Steyn'},
@@ -116,7 +96,8 @@ createTimeline('vrijdag', [
   { time: '14:00', desc: 'Eerste pilskes (Hirschgarten, Seehaus, Augustiner, Paulaner)' },
   { time: '18:00', desc: 'Inchecken Hotel'},
   { time: '19:00', desc: 'Schnitzel @ Andy’s Krablergarten' },
-  { time: 'Abend', desc: 'Hofbräuhaus oder Glockenbachviertel; Burg Pappenheim, Loretta, Pimpernel Club, Trisoux' }
+  { time: '21:00 en later', desc: 'Hofbräuhaus oder Glockenbachviertel; Burg Pappenheim, Loretta, Pimpernel Club, Trisoux' }
+  
 ]);
 
 createTimeline('zaterdag', [
@@ -132,8 +113,3 @@ createTimeline('zondag', [
   { time: '17:15', desc: 'Aankomst Deventer'},
   { time: '17:20', desc: 'Verjaardag Janne' }
 ]);
-
-// Altijd startpage actief bij load
-window.addEventListener('DOMContentLoaded', () => {
-  document.getElementById('startpage').classList.add('active');
-});
