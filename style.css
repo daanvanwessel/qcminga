@@ -103,7 +103,8 @@ body, html {
 #zaterdag,
 #zondag,
 #verblijf {
-  background: url("images/bavarian-bg.jpg") center/cover no-repeat;
+  background: url("images/bavarian-lozenges.svg") repeat;
+  background-size: 200px 173px; /* schaal naar smaak (verhoudingen 1 : √3 aanhouden) */
 }
 
 /* ===== Tijdlijn ===== */
