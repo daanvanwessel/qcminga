@@ -86,33 +86,35 @@ function showVerblijfPhoto() {
 
 // Tijdlijnen vullen
 createTimeline('donderdag', [
-  { time: '16:00', desc: 'Meeten bij Ties voor degene die kunnen', icon: '🤝' },
-  { time: '17:30', desc: 'Diner bij ouders Bram (Oudegoedstraat 10)', icon: '🏠' },
-  { time: '19:10', desc: 'Vertrek naar station Deventer', icon: '🚆' },
-  { time: '19:40', desc: 'Vertrek QC Nightjet', icon: '🚆' }
+  { time: '16:00', desc: 'Pre-Maß @ President Steyn'},
+  { time: '18:15', desc: 'Diner @ Oudegoedstraat 10'},
+  { time: '19:10', desc: 'Vertrek naar station Deventer'},
+  { time: '19:40', desc: 'Vertrek QC Fuckyou Nightjet'}
 ]);
 
 createTimeline('vrijdag', [
-  { time: '6:24', desc: 'Aankomst Augsburg', icon: '🚆' },
-  { time: '6:38', desc: 'Vertrek naar München Hbf', icon: '🚆' },
-  { time: '7:20', desc: 'Aankomst München Hbf', icon: '🚆' },
-  { time: '7:30-08:00', desc: 'Spullen droppen hotel en ontbijt', icon: '☕' },
-  { time: '9:00', desc: 'Sightseeing by 4xL', icon: '🌳' },
-  { time: '12:00', desc: 'Tour Allianz Arena', icon: '🏟️' },
-  { time: '14:00', desc: 'Eerste pilskes (Seehaus, Hofbräuhaus, Hirschgarten, Augustiner, Paulaner)', icon: '🍺' },
-  { time: '18:00', desc: 'Inchecken Hotel', icon: '🏨' },
-  { time: '19:00', desc: 'Andy’s Krablergarten', icon: '🍽️' },
-  { time: 'Abend', desc: 'Glockenbachviertel; Burg Pappenheim, Loretta, Pimpernel Club, Trisoux', icon: '🍸' }
+  { time: '6:24', desc: 'Aankomst Augsburg'},
+  { time: '6:38', desc: 'Vertrek naar München Hbf' },
+  { time: '7:20', desc: 'Aankomst München Hbf'},
+  { time: '7:30-08:00', desc: 'Spullen droppen hotel en ontbijt'},
+  { time: '9:00', desc: 'Sightseeing by 4xL'},
+  { time: '12:00', desc: 'Tour Allianz Arena' },
+  { time: '14:00', desc: 'Eerste pilskes (Hirschgarten, Seehaus, Augustiner, Paulaner)' },
+  { time: '18:00', desc: 'Inchecken Hotel'},
+  { time: '19:00', desc: 'Schnitzel @ Andy’s Krablergarten' },
+  { time: 'Abend', desc: 'Hofbräuhaus oder Glockenbachviertel; Burg Pappenheim, Loretta, Pimpernel Club, Trisoux' }
 ]);
 
 createTimeline('zaterdag', [
-  { time: '07:00', desc: 'Ontbijt hotel', icon: '☕' },
-  { time: '07:45', desc: "Vertrek Wies'n", icon: '🚗' }
+  { time: 'TBA', desc: 'Ontbijt hotel'},
+  { time: 'TBA', desc: 'Vertrek Wiesn' },
+  { time: '09.00', desc: 'Tenten open' },
+  { time: '12:00', desc: 'O'Zapft is! Erste Maß! QC Oktoberfest is a go!' },
 ]);
 
 createTimeline('zondag', [
-  { time: 'Ontbijt', desc: 'Ontbijt hotel', icon: '☕' },
-  { time: '09:50', desc: 'München Hbf', icon: '🚆' },
-  { time: '17:15', desc: 'Aankomst Deventer', icon: '🏠' },
-  { time: '17:20', desc: 'Verjaardag Janne', icon: '🎉' }
+  { time: 'TBA', desc: 'Ontbijt hotel' },
+  { time: '09:50', desc: 'München Hbf' },
+  { time: '17:15', desc: 'Aankomst Deventer'},
+  { time: '17:20', desc: 'Verjaardag Janne' }
 ]);
