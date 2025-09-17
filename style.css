@@ -16,7 +16,7 @@ body, html {
   width: 100%;
   height: 100vh;
   overflow: hidden;
-  background-image: url("images/Hero.jpg"); /* juiste bestandsnaam */
+  background-image: url("images/hero.jpg"); /* juiste bestandsnaam */
   background-size: cover;
   background-position: center;
 }
@@ -190,13 +190,25 @@ body, html {
   box-shadow: 0 4px 16px rgba(0,0,0,0.5);
 }
 
-/* Verblijf-foto fade-in */
+/* Verblijf-foto (responsive) */
 .owners-photo {
   opacity: 0;
   transition: opacity 0.8s ease;
+  margin: 20px auto;
+  max-width: 90%; /* niet breder dan het scherm */
+  text-align: center;
 }
 .owners-photo.visible {
   opacity: 1;
+}
+.owners-photo img {
+  width: 100%;       /* schaalt mee met scherm */
+  height: auto;      /* behoudt verhoudingen */
+  max-width: 300px;  /* limiet voor desktop */
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  display: block;
+  margin: 0 auto;
 }
 
 /* Responsive timeline */
