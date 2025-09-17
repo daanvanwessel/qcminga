@@ -103,7 +103,7 @@ createTimeline('donderdag', [
   { time: '19:10', desc: 'Vertrek naar station Deventer'},
   { time: '19:40', desc: 'Vertrek QC Fuckyou Nightjet'},
   { time: '20:30', desc: 'QC Minga VGT'},
-  { time: '20:45', desc: 'Uitreiking QC Maßmeister award']
+  { time: '20:45', desc: 'Uitreiking QC Maßmeister award'}
 ]);
 
 createTimeline('vrijdag', [
