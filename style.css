@@ -11,7 +11,6 @@ body, html {
   overflow-x: hidden;
   color: #222;
   background: #f0f0f0;
-  line-height: 1.5;
 }
 
 /* ===== Startpagina ===== */
@@ -36,7 +35,7 @@ body, html {
   color: #fff;
 }
 
-/* ===== Knoppen (dag, verblijf en back) ===== */
+/* ===== Knoppen (dag & verblijf) ===== */
 .day-buttons,
 .verblijf-button {
   display: flex;
@@ -46,13 +45,13 @@ body, html {
   margin-top: 20px;
 }
 
-.day-buttons a,
-.verblijf-button a,
+.day-buttons button,
+.verblijf-button button,
 .back-button {
-  max-width: 220px;        /* limiet op desktop */
-  width: 90%;              /* breed op mobiel */
+  width: 220px;
   height: 60px;
   font-size: 1.5em;
+  border: none;
   border-radius: 10px;
   cursor: pointer;
   transition: background 0.3s, transform 0.2s;
@@ -66,20 +65,20 @@ body, html {
 }
 
 /* Oranje dag-knoppen */
-.day-buttons a {
+.day-buttons button {
   background-color: #ff8c00;
 }
-.day-buttons a:hover {
+.day-buttons button:hover {
   background-color: #ffa500;
   transform: scale(1.05);
 }
 
-/* Rood: verblijf + back-button */
-.verblijf-button a,
+/* Rood: verblijf + back */
+.verblijf-button button,
 .back-button {
   background-color: #cc0000;
 }
-.verblijf-button a:hover,
+.verblijf-button button:hover,
 .back-button:hover {
   background-color: #990000;
   transform: scale(1.05);
@@ -211,15 +210,14 @@ body, html {
 
 /* ===== Responsive ===== */
 @media (max-width: 600px) {
-  /* Knoppen */
-  .day-buttons a,
-  .verblijf-button a,
+  .day-buttons button,
+  .verblijf-button button,
   .back-button {
     font-size: 1.2em;
     height: 50px;
+    width: 90%;
   }
 
-  /* Tijdlijn */
   .timeline {
     margin: 30px auto;
     padding: 0 10px;
@@ -247,7 +245,6 @@ body, html {
     font-size: 1em;
   }
 
-  /* Kwallen */
   .timeline-item .kwal {
     width: 60px;
     height: 80px;
