@@ -7,7 +7,7 @@ function openDay(dayId) {
       current.classList.remove('active', 'fade-out');
       const newPage = document.getElementById(dayId);
       newPage.classList.add('active');
-      showTimelineItems(newPage);
+      enableScrollReveal(newPage);
       if (dayId === 'verblijf') showVerblijfPhoto();
     }, 500);
   }
@@ -24,7 +24,7 @@ function goBack() {
   }
 }
 
-// Tijdlijn items
+// Tijdlijn opbouwen
 function createTimeline(dayId, activities) {
   const page = document.getElementById(dayId);
 
@@ -34,23 +34,29 @@ function createTimeline(dayId, activities) {
   const timeline = document.createElement('div');
   timeline.className = 'timeline';
 
-  activities.forEach((act, i) => {
+  activities.forEach((act) => {
     const item = document.createElement('div');
     item.className = 'timeline-item';
 
-    // kwal toevoegen
+    // kwal
     const jelly = document.createElement('div');
     jelly.className = 'kwal';
-    item.appendChild(jelly);
 
-    // inhoud van de kaart
-    item.innerHTML += `
-      <h3>${act.time}</h3>
-      <div class="card">
-        <div style="font-size:1.5em;">${act.icon}</div>
-        <p>${act.desc}</p>
-      </div>
-    `;
+    // tijd
+    const title = document.createElement('h3');
+    title.textContent = act.time;
+
+    // kaartje
+    const card = document.createElement('div');
+    card.className = 'card';
+    const text = document.createElement('p');
+    text.textContent = act.desc;
+    card.appendChild(text);
+
+    // samenvoegen
+    item.appendChild(jelly);
+    item.appendChild(title);
+    item.appendChild(card);
 
     timeline.appendChild(item);
   });
@@ -64,13 +70,19 @@ function createTimeline(dayId, activities) {
   page.appendChild(backBtn);
 }
 
-// Fade-in animatie tijdlijn
-function showTimelineItems(container) {
-  const items = container.querySelectorAll('.timeline-item');
-  items.forEach((item, i) => {
-    setTimeout(() => {
-      item.classList.add('visible');
-    }, i * 200);
+// Scroll reveal
+function enableScrollReveal(container) {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  container.querySelectorAll('.timeline-item').forEach(item => {
+    observer.observe(item);
   });
 }
 
@@ -108,8 +120,8 @@ createTimeline('vrijdag', [
 createTimeline('zaterdag', [
   { time: 'TBA', desc: 'Ontbijt hotel'},
   { time: 'TBA', desc: 'Vertrek Wiesn' },
-  { time: '09.00', desc: 'Tenten open' },
-  { time: '12:00', desc: 'O'Zapft is! Erste Maß! QC Oktoberfest is a go!' },
+  { time: '09:00', desc: 'Tenten open' },
+  { time: '12:00', desc: "O'Zapft is! Erste Maß! QC Oktoberfest is a go!" },
 ]);
 
 createTimeline('zondag', [
@@ -118,3 +130,8 @@ createTimeline('zondag', [
   { time: '17:15', desc: 'Aankomst Deventer'},
   { time: '17:20', desc: 'Verjaardag Janne' }
 ]);
+
+// Altijd startpage actief bij load
+window.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('startpage').classList.add('active');
+});
