@@ -90,14 +90,13 @@ createTimeline('vrijdag', [
   { time: '6:24', desc: 'Aankomst Augsburg Hbf'},
   { time: '6:38', desc: 'Vertrek naar München Hbf' },
   { time: '7:20', desc: 'Aankomst München Hbf'},
-  { time: '7:30-08:00', desc: 'Spullen droppen hotel en ontbijt'},
+  { time: '08:00', desc: 'Spullen droppen hotel en ontbijt'},
   { time: '9:00', desc: 'Sightseeing by 4xL'},
   { time: '12:00', desc: 'Tour Allianz Arena' },
   { time: '14:00', desc: 'Eerste pilskes (Hirschgarten, Seehaus, Augustiner, Paulaner)' },
   { time: '18:00', desc: 'Inchecken Hotel'},
   { time: '19:00', desc: 'Schnitzel @ Andy’s Krablergarten' },
-  { time: '21:00 en later', desc: 'Hofbräuhaus oder Glockenbachviertel; Burg Pappenheim, Loretta, Pimpernel Club, Trisoux' }
-  
+  { time: 'Abend', desc: 'Hofbräuhaus oder Glockenbachviertel; Burg Pappenheim, Loretta, Pimpernel Club, Trisoux' }
 ]);
 
 createTimeline('zaterdag', [
