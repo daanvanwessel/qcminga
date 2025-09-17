@@ -101,7 +101,9 @@ createTimeline('donderdag', [
   { time: '16:00', desc: 'Pre-Maß @ President Steyn'},
   { time: '18:15', desc: 'Diner @ Oudegoedstraat 10'},
   { time: '19:10', desc: 'Vertrek naar station Deventer'},
-  { time: '19:40', desc: 'Vertrek QC Fuckyou Nightjet'}
+  { time: '19:40', desc: 'Vertrek QC Fuckyou Nightjet'},
+  { time: '20:30', desc: 'QC Minga VGT'},
+  { time: '20:45', desc: 'Uitreiking QC Maßmeister award']
 ]);
 
 createTimeline('vrijdag', [
