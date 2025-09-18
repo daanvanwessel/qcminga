@@ -1,11 +1,16 @@
 function openDay(dayId) {
+  // Verberg alle pagina’s
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+
+  // Toon de gekozen pagina
   const newPage = document.getElementById(dayId);
   if (newPage) {
     newPage.classList.add('active');
+
     if (dayId === 'verblijf') {
       showVerblijfPhoto();
     } else if (!newPage.querySelector('.timeline')) {
+      // Tijdlijnen alleen genereren als ze nog niet bestaan
       if (dayId === 'donderdag') {
         createTimeline('donderdag', [
           { time: '16:00', desc: 'Pre-Maß @ President Steyn'},
