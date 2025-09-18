@@ -46,7 +46,7 @@ function openDay(dayId) {
       if (dayId === 'zondag') {
         createTimeline('zondag', [
           { time: 'TBA', desc: 'Ontbijt hotel' },
-          { time: '09:50', desc: 'München Hbf' },
+          { time: '09:50', desc: 'Vertrek München Hbf' },
           { time: '17:15', desc: 'Aankomst Deventer'},
           { time: '17:20', desc: 'Verjaardag Janne' }
         ]);
