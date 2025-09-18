@@ -3,17 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Minga, Maß und Mordsgaudi</title>
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="style.css">
-
-  <!-- Favicons -->
-  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
-  <link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64.png">
-  <link rel="icon" type="image/x-icon" href="images/favicon.ico">
-  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 </head>
 <body>
 
@@ -28,6 +21,9 @@
       <button onclick="openDay('vrijdag')">Vrijdag</button>
       <button onclick="openDay('zaterdag')">Zaterdag</button>
       <button onclick="openDay('zondag')">Zondag</button>
+    </div>
+    <div class="sponsor-button">
+      <button onclick="openDay('hauptsponsor')">Hauptsponsor</button>
     </div>
   </div>
 </div>
@@ -55,16 +51,14 @@
   </div>
 </div>
 
-  <!-- Hauptsponsor pagina -->
+<!-- Hauptsponsor pagina -->
 <div id="hauptsponsor" class="page">
-  <div class="overlay">
-    <div class="sponsor-logo">
-      <img src="images/logolinus.png" alt="Hauptsponsor Logo">
-    </div>
-    <button class="back-button" onclick="goBack()">Heimwärts</button>
+  <div class="sponsor-logo">
+    <img src="images/logolinus.png" alt="Hauptsponsor Logo">
   </div>
+  <button class="back-button" onclick="goBack()">Heimwärts</button>
 </div>
-  
+
 <!-- Scripts -->
 <script src="js/main.js"></script>
 </body>
