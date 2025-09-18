@@ -180,14 +180,23 @@ body, html {
   box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 }
 
-/* ===== Sponsor (alleen hier logo zichtbaar) ===== */
+/* ===== Sponsor ===== */
+/* Inactieve sponsorpagina krijgt GEEN flex → dus blijft verborgen */
 #hauptsponsor {
-  display: flex;
+  /* alleen de achtergrond */
+}
+
+/* Actieve sponsorpagina wordt gecentreerd */
+#hauptsponsor.page.active {
+  display: flex;                 /* override .page.active {display:block} */
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  min-height: 100vh;
   padding: 20px;
+  box-sizing: border-box;
 }
+
 .sponsor-logo {
   max-width: 400px;
   width: 80%;
@@ -196,7 +205,7 @@ body, html {
   width: 100%;
   height: auto;
   display: block;
-  position: relative; /* voorkomt dat hij vast op alle pagina’s staat */
+  position: relative; /* blijft in container */
 }
 
 /* ===== Back-knop ===== */
