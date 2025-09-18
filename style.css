@@ -12,7 +12,10 @@ body, html {
   color: #222;
   background: #f0f0f0;
 }
-
+.timeline-item {
+  background: rgba(255, 0, 0, 0.3); /* tijdelijke rode box */
+  border: 1px solid red;
+}
 /* ===== Startpagina ===== */
 #startpage {
   position: relative;
